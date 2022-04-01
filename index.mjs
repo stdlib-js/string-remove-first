@@ -1,0 +1,4 @@
+// Copyright (c) 2022 The Stdlib Authors. License is Apache-2.0: http://www.apache.org/licenses/LICENSE-2.0
+/// <reference types="./index.d.ts" />
+import e from"https://cdn.jsdelivr.net/gh/stdlib-js/assert-is-string@esm/index.mjs";import t from"https://cdn.jsdelivr.net/gh/stdlib-js/assert-is-nonnegative-integer@esm/index.mjs";import r from"https://cdn.jsdelivr.net/gh/stdlib-js/string-next-grapheme-cluster-break@esm/index.mjs";import s from"https://cdn.jsdelivr.net/gh/stdlib-js/string-format@esm/index.mjs";var i=e.isPrimitive,n=t.isPrimitive,m=r,a=s;var d=function(e,t){var r;if(!i(e))throw new TypeError(a("invalid argument. First argument must be a string. Value: `%s`.",e));if(arguments.length>1){if(!n(t))throw new TypeError(a("invalid argument. Second argument must be a nonnegative integer. Value: `%s`.",t));for(r=0;t>0;)r=m(e,r),t-=1}else r=m(e);return""===e||-1===r?"":e.substring(r)};export{d as default};
+//# sourceMappingURL=index.mjs.map
