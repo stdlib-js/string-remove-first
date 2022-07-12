@@ -31,7 +31,7 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@v0.0.9-deno/mod.js';
+import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@deno/mod.js';
 ```
 
 #### removeFirst( str\[, n] )
@@ -67,7 +67,7 @@ out = removeFirst( 'foo bar', 10 );
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@v0.0.9-deno/mod.js';
+import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@deno/mod.js';
 
 var str = removeFirst( 'last man standing' );
 // returns 'ast man standing'
