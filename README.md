@@ -31,7 +31,7 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@esm/index.mjs';
+import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@v0.0.9-esm/index.mjs';
 ```
 
 #### removeFirst( str\[, n] )
@@ -72,7 +72,7 @@ out = removeFirst( 'foo bar', 10 );
 <body>
 <script type="module">
 
-import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@esm/index.mjs';
+import removeFirst from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@v0.0.9-esm/index.mjs';
 
 var str = removeFirst( 'last man standing' );
 // returns 'ast man standing'
