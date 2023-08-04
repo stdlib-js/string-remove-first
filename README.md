@@ -24,43 +24,36 @@ limitations under the License.
 
 > Remove the first character(s) of a string.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/string-remove-first
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+-   To use as a general utility for the command line, install the corresponding [CLI package][cli-section] globally.
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-removeFirst = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@umd/browser.js' )
+var removeFirst = require( '@stdlib/string-remove-first' );
 ```
 
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+#### removeFirst( str\[, n]\[, options] )
 
-```javascript
-var removeFirst = require( 'path/to/vendor/umd/string-remove-first/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.removeFirst;
-})();
-</script>
-```
-
-#### removeFirst( str\[, n] )
-
-Removes the first character of a `string`.
+Removes the first character(s) of a `string`.
 
 ```javascript
 var out = removeFirst( 'last man standing' );
@@ -70,7 +63,17 @@ out = removeFirst( 'Hidden Treasures' );
 // returns 'idden Treasures'
 ```
 
-If provided a second argument, the function removes the first `n` characters.
+The function supports the following options:
+
+-   **mode**: type of characters to return. Must be one of the following:
+
+    -   `'grapheme'`: grapheme clusters. Appropriate for strings containing visual characters which can span multiple Unicode code points (e.g., emoji).
+    -   `'code_point'`: Unicode code points. Appropriate for strings containing visual characters which are comprised of more than one Unicode code unit (e.g., ideographic symbols and punctuation and mathematical alphanumerics).
+    -   `'code_unit'`: UTF-16 code units. Appropriate for strings containing visual characters drawn from the basic multilingual plane (BMP) (e.g., common characters, such as those from the Latin, Greek, and Cyrillic alphabets).
+
+    Default: `'grapheme'`.
+
+By default, the function returns the first character. To return the first `n` characters, provide a second argument specifying the number of characters to return.
 
 ```javascript
 var out = removeFirst( 'foo bar', 4 );
@@ -84,19 +87,26 @@ out = removeFirst( 'foo bar', 10 );
 
 <!-- /.usage -->
 
+<!-- Package usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+## Notes
+
+-   By default, the function assumes the general case in which an input string may contain an arbitrary number of grapheme clusters. This assumption comes with a performance cost. Accordingly, if an input string is known to only contain visual characters of a particular type (e.g., only alphanumeric), one can achieve better performance by specifying the appropriate `mode` option.
+
+</section>
+
+<!-- /.notes -->
+
 <section class="examples">
 
 ## Examples
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/string-remove-first@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var removeFirst = require( '@stdlib/string-remove-first' );
 
 var str = removeFirst( 'last man standing' );
 // returns 'ast man standing'
@@ -118,18 +128,106 @@ str = removeFirst( '🐶🐮🐷🐰🐸', 2 );
 
 str = removeFirst( '🐶🐮🐷🐰🐸', 10 );
 // returns ''
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
 
 <!-- /.examples -->
 
+* * *
 
+<section class="cli">
+
+## CLI
+
+<section class="installation">
+
+## Installation
+
+To use as a general utility, install the CLI package globally
+
+```bash
+npm install -g @stdlib/string-remove-first-cli
+```
+
+</section>
+
+<!-- CLI usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```text
+Usage: remove-first [options] [<string>]
+
+Options:
+
+  -h,    --help                Print this message.
+  -V,    --version             Print the package version.
+         --n                   Number of characters to remove. Default: 1.
+         --split sep           Delimiter for stdin data. Default: '/\\r?\\n/'.
+         --mode mode           Type of character to return. Default: 'grapheme'.
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- CLI usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+### Notes
+
+-   If the split separator is a [regular expression][mdn-regexp], ensure that the `split` option is either properly escaped or enclosed in quotes.
+
+    ```bash
+    # Not escaped...
+    $ echo -n $'beep\nboop' | remove-first --split /\r?\n/
+
+    # Escaped...
+    $ echo -n $'beep\nboop' | remove-first --split /\\r?\\n/
+    ```
+
+-   The implementation ignores trailing delimiters.
+
+</section>
+
+<!-- /.notes -->
+
+<section class="examples">
+
+### Examples
+
+```bash
+$ remove-first beep
+eep
+```
+
+To use as a [standard stream][standard-streams],
+
+```bash
+$ echo -n 'beep\nboop' | remove-first --n=2
+be
+bo
+```
+
+By default, when used as a [standard stream][standard-streams], the implementation assumes newline-delimited data. To specify an alternative delimiter, set the `split` option.
+
+```bash
+$ echo -n 'beep\tboop' | remove-first --split '\t'
+eep
+oop
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.cli -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -224,7 +322,7 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/string/remove-last]: https://github.com/stdlib-js/string-remove-last/tree/umd
+[@stdlib/string/remove-last]: https://github.com/stdlib-js/string-remove-last
 
 <!-- </related-links> -->
 
