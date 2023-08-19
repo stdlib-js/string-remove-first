@@ -51,9 +51,9 @@
     "@stdlib/process-read-stdin": "^0.0.7",
     "@stdlib/regexp-eol": "^0.0.7",
     "@stdlib/streams-node-stdin": "^0.0.7",
-    "@stdlib/string-base-remove-first": "github:stdlib-js/string-base-remove-first#main",
-    "@stdlib/string-base-remove-first-code-point": "github:stdlib-js/string-base-remove-first-code-point#main",
-    "@stdlib/string-base-remove-first-grapheme-cluster": "github:stdlib-js/string-base-remove-first-grapheme-cluster#main",
+    "@stdlib/string-base-remove-first": "^0.0.1",
+    "@stdlib/string-base-remove-first-code-point": "^0.0.1",
+    "@stdlib/string-base-remove-first-grapheme-cluster": "^0.0.1",
     "@stdlib/string-format": "^0.0.3",
     "@stdlib/utils-regexp-from-string": "^0.0.9"
   },
