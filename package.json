@@ -54,7 +54,7 @@
     "@stdlib/string-base-remove-first": "^0.0.1",
     "@stdlib/string-base-remove-first-code-point": "^0.0.1",
     "@stdlib/string-base-remove-first-grapheme-cluster": "^0.0.1",
-    "@stdlib/string-format": "^0.0.3",
+    "@stdlib/error-tools-fmtprodmsg": "^0.0.2",
     "@stdlib/utils-regexp-from-string": "^0.0.9"
   },
   "devDependencies": {
